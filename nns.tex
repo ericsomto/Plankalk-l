@@ -1,0 +1,234 @@
+
+$Free Choice of Denotation
+For all objects, freely chosen identifiers (Bezeichnun-
+gen) may be introduced; for example, a standard deno-
+tation can be associated (zugeordnet) with an identifier
+(see Section 6) such that both possess the same object
+as their value (Wert).
+In a Rechenplan 6', i.e. in a program or a subroutine
+(see Section 9), an identifier is a letter followed by a
+number. The letter is V, Z, R, or C, depending on
+whether the object in question is used as an input
+parameter (Variable), intermediate value (Zwischen-
+wert), result parameter (Resultatwert), or as a constant
+in 6~. The distinguishing number (Nummer) is attached
+to the letter in the line below. The letter classifies the
+objects.
+Examples:
+II, Z, Z, R
+0 0 1 0
+Finally, programs and subroutines have their own
+identifiers like
+P12, P3.7
+the number following the letter P being a program
+index (Programm-lndex), in the form of a component-
+subscript (see Section 4). The second example denotes
+"the program 7 of the program group 3." Thus, Zuse
+has arrays of programs and a corresponding block struc-
+ture. He derives from this a system to denote the results
+of subroutines in external use; for example, the result
+R of a subroutine P17 is external to P17 characterized
+0
+by the program index 17, i.e. by
+R17
+0
+which also involves a call of P17 
+
+. Subseripting
+The selection of a component is achieved with the
+help of a component-subscript (Komponenten-Index),
+that is the denotation of a number (simple subscript)
+or a sequence of numbers (multiple subscript). The
+component-subscript is written immediately under the
+identifying number of the corresponding composite ob-
+ject.
+V denote an array of the modeLet, for example, 0
+I X m X S l . n , then
+V
+0 ( 0 < i < / )
+i
+selects its ith component, a subarray of a structure
+m X S l . n , while
+V
+0
+i'j
+( 0 _ < j < m)
+V
+selects the jth component of 0 , a list of the structure
+i
+S l . n , and finally
+V
+0 ( 0 < k < n )
+i . j . k
+V
+selects the kth component of 0 , a single bit. In today's
+i.j
+notation, this corresponds to V0[i], VO[i,j], VO[i,j, k]
+
+The form o f denotation with a " m a i n line" and
+"index lines" V and K for variable-number and c o m -
+ponent-subscript, respectively, is supplemented by an
+optional c o m m e n t line S, in which the structure or m o d e
+o f the value in question can be noted. To this end, the
+n o t a t i o n o f Section 1 is used; Zuse calls these indications
+Struktur-lndizes.
+Examples are given in Figure 2, an illustrative sec-
+tion f r o m [Z59, p. 69].
+The explicit m a r k i n g o f the lines by prefixed letters
+V, K, and S, allows one to omit e m p t y K-lines. F u r -
+thermore, the prefix S in the m o d e denotation can be
+dropped. Thus,
+S[ S l . n m >( S l . n SO $2 ~r
+can be shortened to
+S[ 1.n m X 1.n 0 2 a.
+Moreover, Zuse allows the abbreviation o f
+S[ A1 A2 
+
+A [ 1 2 0 3
+(using A 0 s y n o n y m ously with S0)
+F u r t h e r m o r e , variable c o m p o n e n t subscripts can be
+used [Z70, p. 123], for example by the help o f an inter-
+mediate value in the f o r m
+K V ZV 0 I
+k
+rn X 1.n 1.n
+with the m e a n i n g o f V0[Z1] in t o d a y ' s notation.
+( N o t e that Z1 is o f structure S1 .n; that is, the integer
+corresponding to the bit sequence Z I is used as sub-
+script, and a c o m p o n e n t o f structure S 1 - n is selected
+f r o m VO.)
+Originally, Zuse [Z49] introduced the ~ , shaped equality
+sign. The arrow-like sign ==;,is used in IZ59], after Rutishauser
+had helped to propagate it. In [R52], Rutishauser used in typesclipt
+the sign#=. At the Zfirich ALGOL Conference 1958, the sign
+:= was introduced under strong pressure from the American
+participants. The European group wished to use Zuse's sign.
+681
+
+Assignment and Identity Declaration
+The m o s t i m p o r t a n t feature for the construction o f
+p r o g r a m s is the assignment (Rechenplangleichung), ex-
+pressed by means o f the Ergibtzeichen ~ . 9 F o r ex-
+ample, the assignment
+1Zn + 1 ~ ZV 1
+S 1 .n 1 .n
+means to a u g m e n t the integer intermediate value Z1 by
+1, while
+(z, v ) ~ R
+V 0 1 0
+S ~ ~ 2~
+
+means the composition of the values V0 and V~ to a
+composite value, which is denoted by Ro.
+The interpretation of the second example shows that
+the assignment comprises the semantic meaning of an
+(initialized) identity declaration for a variable: The
+identifier R0 of the mode 2~ is used to denote the elab-
+orated value on the left-hand side.
+If in a program more than one assignment to the
+same result or intermediate value variable occurs, then
+the (dynamically) first assignment is to be interpreted
+as an (initialized) identity declaration for a variable,
+while all others are ordinary assignments. This would
+give the genuine concept of a variable. On the other
+hand, the initialization of an input parameter in con-
+nection with a subroutine call,/° as well as the initializa-
+tion of constants, can be interpreted to be an ordinary
+identity declaration. However, these fine distinctions
+are reflected neither in the notation nor in the explana-
+tion of the semantics [Z59, p. 70]. Nevertheless, they
+have strongly influenced Rutishauser's ideas, as seen
+from ALGOL58.
+The usual arithmetic and Boolean operations are
+provided for, and they allow one to form expressions
+(Ausdr~cke) in connective formula notation, n Besides,
+comparison operations like = , ~ , < , with Boolean
+values as results, can be used. For arithmetic opera-
+tions, objects of the mode bits (denoted by S l . n ) are
+interpreted as numbers in direct (lexicographic) corresponding
+
+Further Operational Features
+Apart from the possibility of selecting record and
+array components by (component) subscripts, certain
+operations from the predicate calculus are used to test
+components with respect to a specified property, with
+the result of selecting them or of obtaining a Boolean
+value. In this respect, the Plankalk~2l surpasses the
+potentialities in today's programming languages, in-
+cluding ALGOL68.
+Zuse uses both the "existence" and the "all" oper-
+ator, and in particular the operator g:
+gx(x ~ v A R(x))
+0
+means "The next component of V0, for which the
+property R holds."
+
+
+The property R, in the notation R(x), is expressed
+by means of a computational rule which gives a Boolean
+value (Ja-Nein-Wert), or of a result parameter of a
+suitable subroutine (see Section 8).
+It is clear, that procedures can be defined in, say,
+
+ALGOL 68, which have the above effect. But it may be
+worthwhile to see whether Zuse's constructions could
+be introduced as original conce.pts in high level lan-
+guages. See also [BG72].
+
+
+Statements and Subroutine Calls
+Statements are what Zuse calls Planteile. In partic-
+ular, assignments are statements. Other statements,
+which we shall discuss, are conditional statements and
+repetitive statements. There is also a compound state-
+ment, formed with the help of parentheses. In order to
+separate statements, as well as the line marks (see Sec-
+tion 5), a vertical bar is used.
+Conditional statements are formed with the help of
+the Bedingt-Zeichen -:-> (or .-~) in the following form
+(B --~, (~,
+where the condition (Bedingung) ~ is an expression with
+Boolean value, and 0~ an arbitrary statement. The
+elaboration of this conditional statement bedingter
+Planteil) begins with ~ and ends with ~ or is continued
+with a, depending on whether 6~ produces the value
+0 = nein or L --- ja. An alternative for a in the first
+case cannot be specified
+
+The following example of a repetitive statement, that
+is initiated by the letter W, shows an application of the
+g-operation of the preceding section:
+[ ~ u x ( ; ' V A x ' V ) ~ Z I ( R A R I 7 ( Z ) ) ~ ! ]
+V 0 1 0 0 1 0
+S m~ cr ~r 0 0
+
+The elaboration of this Wiederholungsplan starts
+with the first assignment. The left-hand side formula of
+this assignment produces at each elaboration the next
+component V0[i] which is different from V1, provided
+it exists. In this case, the following statement is elabo-
+rated and the process starts again. If, however, no com-
+ponent is found then Z0 is unchanged and the elabora-
+tion of the repetitive statement is finished.
+In the second assignment of this example, where an
+initialization of R0 is presupposed, R171(Z0) is the call
+of a subroutine P17 (see Section 9), which is specified
+to have one input parameter and a result parameter R1.
+
+The elaboration of this call means the
+identification of the actual parameter Z0 with the formal
+input parameter, and following this, the elaboration of
+Pl7. The value of the call is the value which is obtained
+by R1.
+
+It cannot be excluded that Zuse considered the input parame-
+ters to be genuine variables whose values can be changed during
+the subroutine. This is indicated by an isolated occurrence of
+(V, V) ==~V in [Z59].
+5 6 7
+1~[Z49, p. 447]: "The Ergibt-Zeichen~joins an expression
+which is to be calculated (left) with a result (right)." According to
+Zuse such expressions mean computational rules (Rechenvor-
+sehr~ften.)
+~ The example in [Z59,p. 71] ends, however,with an expression g
+instead of ~;~ R0 FIN, where R0 is the only result parameter
