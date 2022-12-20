@@ -1,5 +1,8 @@
 # Plankalk-l
+
 A Programming Language for hardware and 3D graphics rendering
+
+Plankalkül was an attempt by Konrad Zuse in the 1940's to devise a notational and conceptual system for writing what today is termed a program. Although this early approach to a programming language did not lead to practical use, the plan is described here because it contains features that are standard in today's programming languages. 
 
 #### Data Structure
 
